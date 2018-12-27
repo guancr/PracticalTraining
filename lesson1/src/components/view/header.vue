@@ -1,8 +1,8 @@
 <template>
   <div id="header">
-      <span><img src="../images/1.jpg" alt=""></span>
+      <span><img src="../../images/1.jpg" alt=""></span>
       <input type="text" placeholder="猜你喜欢 浮生">
-      <span><img src="../images/3_06.jpg" alt=""></span>
+      <span><img src="../../images/3_06.jpg" alt=""></span>
   </div>
 </template>
 

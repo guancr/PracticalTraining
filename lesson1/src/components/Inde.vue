@@ -1,33 +1,24 @@
 <template>
   <div id="App">
-    <!-- <Header/>
+    <Header/>
     <Main/>
-    <Footer/> -->
+    
     <!-- <button @click="changeNum('+')">+</button>
     <span>{{this.$store.state.app.num}}</span>
     <button @click="changeNum('-')">-</button> -->
-
-    <router-view/>
-    <Footer/>
   </div>
 </template>
 
 <script>
-// import Header from './components/header'
-// import Main from './components/main'
-import Footer from './components/footer'
+import Header from './view/header'
+import Main from '../components/view/main'
+import Footer from './footer'
 export default {
   name: 'App',
   components:{
+    Header,
+    Main,
     Footer
-  },
-  mounted(){
-    console.log(this.$store)
-  },
-  methods:{
-    changeNum(type){
-      this.$store.commit('changeNum',{payload:type})
-    }
   }
 }
 </script>

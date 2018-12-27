@@ -7,25 +7,25 @@
 
         <div class="img">
             <div class="imgcol">
-                <img src="../images/lb1_15.jpg" alt="">
+                <img src="../../images/lb1_15.jpg" alt="">
             </div>
         </div>
       <div class="nav">
           <ul>
             <li>
-                <span><img src="../images/nav1_19.jpg" alt=""></span>
+                <span><img src="../../images/nav1_19.jpg" alt=""></span>
                 <p>私人FM</p>
             </li>
             <li>
-                <span><img src="../images/nav1_19.jpg" alt=""></span>
+                <span><img src="../../images/nav1_19.jpg" alt=""></span>
                 <p>每日推荐</p>
             </li>
             <li>
-                <span><img src="../images/nav1_19.jpg" alt=""></span>
+                <span><img src="../../images/nav1_19.jpg" alt=""></span>
                 <p>歌单</p>
             </li>
             <li>
-                <span><img src="../images/nav1_19.jpg" alt=""></span>
+                <span><img src="../../images/nav1_19.jpg" alt=""></span>
                 <p>排行榜</p>
             </li>
           </ul>
@@ -33,35 +33,35 @@
           <h4 class="h4">推荐歌单 ></h4>
       <div class="list">
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
           <dl>
-              <dt><img src="../images/list1_03.jpg" alt=""></dt>
+              <dt><img src="../../images/list1_03.jpg" alt=""></dt>
               <dd>要做什么梦是每个人的自由</dd>
           </dl>
       </div>
@@ -144,6 +144,9 @@ export default {
     height: 30px;
     line-height: 30px;
 
+}
+.list{
+    margin-bottom: 20px;
 }
 .list dl{
     width: 33%;

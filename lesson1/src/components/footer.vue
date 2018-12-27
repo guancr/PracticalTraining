@@ -1,26 +1,26 @@
 <template>
   <div id="footer">
       <ul>
-          <li>
+          <router-link tag="li" to="Indexs">
               <span><img src="../images/btm_07.jpg" alt=""></span>
               <p>发现</p>
-          </li>
-          <li>
+          </router-link>
+          <router-link tag="li" to="Audio">
               <span><img src="../images/btm_07.jpg" alt=""></span>
               <p>发现</p>
-          </li>
-          <li>
+          </router-link>
+          <router-link tag="li" to="Indexs">
               <span><img src="../images/btm_07.jpg" alt=""></span>
               <p>发现</p>
-          </li>
-          <li>
+          </router-link>
+          <router-link tag="li" to="Indexs">
               <span><img src="../images/btm_07.jpg" alt=""></span>
               <p>发现</p>
-          </li>
-          <li>
+          </router-link>
+          <router-link tag="li" to="Indexs">
               <span><img src="../images/btm_07.jpg" alt=""></span>
               <p>发现</p>
-          </li>
+          </router-link>
       </ul>
   </div>
 </template>
@@ -35,6 +35,9 @@ export default {
 #footer{
     height: 50px;
     background: #eee;
+    position:fixed;
+    bottom:0;
+    width: 100%;
 }
     #footer ul{
         display: flex;

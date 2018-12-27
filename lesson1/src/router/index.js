@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Gxtj from '@/components/view/gxtj'
 import Zbdt from '@/components/view/zbdt'
+import Indexs from '../components/Inde.vue'
+import Audio from '../components/Audio.vue'
 
 Vue.use(Router)
 
@@ -9,16 +11,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Gxtj',
-      component: Gxtj
+      name: 'Indexs',
+      component: Indexs
     },{
-      path: '/gxtj',
-      name: 'Gxtj',
-      component: Gxtj
+      path: '/Indexs',
+      name: 'Indexs',
+      component: Indexs
     },{
-      path: '/zbdt',
-      name: 'Zbdt',
-      component: Zbdt
+      path: '/Audio',
+      name: 'Audio',
+      component: Audio
     }
   ]
 })

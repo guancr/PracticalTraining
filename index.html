@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id='all'>
+    
+        <img src="" alt="" id="a1">
+        <img src="" alt="" id="a2">
+        <img src="" alt="" id="a3">
+        <img src="" alt="" id="a4">
+    </div> -->
+    <script>
+        function preLoadImg(src) {
+            return new Promise((resolve, reject) => {
+                let image = new Image();
+                image.onload = function() {
+                    resolve(image)
+                }
+                image.onerror = function() {
+                    reject('图片找不到')
+                }
+                image.src = src;
+            })
+
+        }
+        const url = ['https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2387247099,3122374561&fm=173&app=25&f=JPEG?w=218&h=146&s=71D0798FC44338F4508090880300B091',
+            'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=563779316,74808714&fm=173&app=25&f=JPEG?w=218&h=146&s=54E8B5448E320E9683A028B80300C012',
+            'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=824512013,3802324951&fm=173&app=25&f=JPEG?w=218&h=146&s=BF00DF004E735B867B8509C30300E0E2',
+            'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3195659450,1215059308&fm=173&app=25&f=JPEG?w=218&h=146&s=FC87449BDE1306C056ABF6AC0300A009','https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1765231565,1905328601&fm=58&bpow=720&bpoh=1080','https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1411427094,225788602&fm=27&gp=0.jpg'
+        ];
+
+        render(url)
+
+        function render(data) {
+            // console.log(Promise)
+            Promise.all(data.map(item => {
+                return preLoadImg(item)
+            })).then(val => {
+                // console.log(val)
+                val.forEach(item => {
+                    document.body.append(item)
+                })
+            }).catch(function(data) {
+                console.log(data)
+            })
+        }
+
+        // for (let i = 0; i < arr.length; i++) {
+        //     console.log(arr[i])
+        //     new Promise((reslove, reject) => {
+        //         let img = new Image();
+        //         img.src = arr[i];
+        //         img.onload = () => {
+        //             reslove(arr[i]);
+        //         }
+        //     }).then(url => {
+        //         $('#all img').eq(i)[0].src = url;
+        //     }).catch(reject => { });
+        // }
+
+    </script>
+</body>
+
+</html>

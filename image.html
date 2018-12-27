@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Promise加载图片,</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <script>
+        // Promise加载图片
+        var loadImg = (url) => {
+            return new Promise((resolve, reject) => {
+                // 创建图片
+                var img = new Image()
+                // 加载成功
+                img.onload = () => {
+                    resolve(img)
+                }
+                // 图片加载
+                img.onerror = () => {
+                    reject(new Error('图片加载失败'))
+                }
+                img.src = url
+            })
+        }
+        var imgs = ['https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2387247099,3122374561&fm=173&app=25&f=JPEG?w=218&h=146&s=71D0798FC44338F4508090880300B091',
+            'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3195659450,1215059308&fm=173&app=25&f=JPEG?w=218&h=146&s=FC87449BDE1306C056ABF6AC0300A009', 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1765231565,1905328601&fm=58&bpow=720&bpoh=1080', 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1411427094,225788602&fm=27&gp=0.jpg',
+            'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=563779316,74808714&fm=173&app=25&f=JPEG?w=218&h=146&s=54E8B5448E320E9683A028B80300C012',
+            'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=824512013,3802324951&fm=173&app=25&f=JPEG?w=218&h=146&s=BF00DF004E735B867B8509C30300E0E2'
+        ]
+        // 并行加载
+        var loadImgAsync = (imgs) => {
+            imgs.forEach(async (item) => {
+                let img = await loadImg(item)
+                document.body.appendChild(img)
+            })
+        }
+        loadImgAsync(imgs)
+
+        // 串行加载
+        // var ImgAsync = async (imgs) => {
+        //     for (var i = 0; i < imgs.length; i++) {
+        //         let img = await loadImg(imgs[i])
+        //         document.body.appendChild(img)
+        //     }
+        // }
+        // ImgAsync(imgs)
+    </script>
+</body>
+
+</html>
