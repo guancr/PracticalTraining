@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>补换驾照</title>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@1.4/lib/index.css">
+
+  <!-- 引入组件 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vant@1.4/lib/vant.min.js"></script>
+  <script>
+    // 计算rem
+    var fun = function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+
+          //这里是假设在750px宽度设计稿的情况下，1rem = 100px；
+          //可以根据实际需要修改
+          // docEl.style.fontSize =  (clientWidth / 750)*100 + 'px';
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    }
+    fun(document, window);
+    // 引入移动端调试工具
+    (function () {
+      var script = document.createElement('script');
+      script.src = "//cdn.jsdelivr.net/npm/eruda";
+      document.head.appendChild(script);
+      script.onload = function () {
+        eruda.init()
+      }
+    })();
+
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="./dist/build.js"></script>
+</body>
+
+</html>
+
+
+<!-- 增加若干个对应的闭包域空间(这里采用的是匿名函数),专门用来存储原先需要引用的内容(下标),不过只限于基本类型(基本类型值传递,对象类型引用传递) -->
+
+<!-- for(var i = 0;i<arr.length;i++){
+
+    //声明一个匿名函数,若传进来的是基本类型则为值传递,故不会对实参产生影响,
+    //该函数对象有一个本地私有变量arg(形参) ,该函数的 function scope 的 closure 对象属性有两个引用,一个是 arr,一个是 i
+    //尽管引用 i 的值随外部改变 ,但本地私有变量(形参) arg 不会受影响,其值在一开始被调用的时候就决定了.
+    (function (arg) {
+        arr[i].onclick = function () {  
+          //onclick函数实例的 function scope 的 closure 对象属性有一个引用 arg,
+            alert(arg);                 
+            //只要 外部空间的 arg 不变,这里的引用值当然不会改变
+        }
+    })(i); 
+    //立刻执行该匿名函数,传递下标 i(实参)
+} -->
