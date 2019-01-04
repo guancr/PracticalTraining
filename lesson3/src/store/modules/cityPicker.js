@@ -8,7 +8,8 @@ const state = {
     //选择的签发城市
     city:[],
     //选择的签发城市
-    cost:[]
+    cost:[],
+    pic:''
 }
 
 const mutations = {
@@ -34,7 +35,7 @@ const actions = {
         let proIndex = state.cityList.findIndex(item=>item.name==state.city[0]);
         let cityIndex = state.cityList[proIndex].list.findIndex(item=>item.name==state.city[1])
         let res = await costList(1,state.cityList[proIndex].id,state.cityList[proIndex].list[cityIndex].id);
-        console.log(res.data)
+        console.log(res.data[0].list[0].cost)
         commit('updateState',{costList:res.data})
     }
 } 
