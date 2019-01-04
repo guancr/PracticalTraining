@@ -3,14 +3,17 @@
         <li @click="cityListClick">
             <span>当前驾照签发城市<b class="icons">?</b></span>
             <!-- <b class="citynone">请选择补换地</b> -->
-            <b>{{city.join('')}}</b>
+            <b title="请选择补换地">{{city.join('')}}</b>
         </li>
         <li @click="costListClick">
             <span>可补换的签发城市<b class="icons">?</b></span>
-            <b>请选择补换地</b>
+            <b>{{cost.join('')}}</b>
         </li>
         <van-popup v-model="showCity" position="bottom">
           <van-picker :columns="cityColumns" @change="cityChange" title="选择签发城市" @cancel="cityCancel" @confirm="cityConfirm" ref='cityPicker' show-toolbar />
+        </van-popup>
+        <van-popup v-model="showCost" position="bottom">
+          <van-picker :columns="costColumns" @change="costChange" title="请选择补换地" @cancel="costCancel" @confirm="costConfirm" ref='costPicker' show-toolbar />
         </van-popup>
     </ul>
 </template>
@@ -23,7 +26,8 @@ export default {
       return {
         showCity: false,
         showCost: false,
-        cityColumns:[]
+        cityColumns:[],
+        costColumns:[]
       }
   },
   beforeCreate() {},
@@ -39,12 +43,15 @@ export default {
   computed:{
       ...mapState({
           cityList:state=>state.cityPicker.cityList,
-          city:state=>state.cityPicker.city
+          costList:state=>state.cityPicker.costList,
+          city:state=>state.cityPicker.city,
+          cost:state=>state.cityPicker.cost
       })
   },
   methods: {
     ...mapActions({
-      getCityList: "cityPicker/getCityList"
+      getCityList: "cityPicker/getCityList",
+      getCostList: "cityPicker/getCostList"
     }),
     ...mapMutations({
       updateState: "cityPicker/updateState"
@@ -53,21 +60,45 @@ export default {
         this.showCity = true;
     },
     costListClick(){
-        this.showCost = true;
+        // this.showCost = true;
+        if(!this.city.length){
+            alert('请选择签发城市');
+        }else{
+            this.showCost = true;
+            this.getCostList().then(res=>{
+                this.costColumns=[{
+                        values: this.costList.map(item=>item.name)
+                    },{
+                        values: this.costList[0].list.map(item=>item.name)
+                    }]
+            })
+        }
     },
     cityChange(picker,values){
+        //获取当前省份下标
         let index = this.cityList.findIndex(item=>item.name==values[0]);
-        // this.cityColumns[1] = {
-        //     values:this.cityList[index].list.map(item=>item.name)
-        // }
+        //调用api更新城市
         this.$refs.cityPicker.setColumnValues(1,this.cityList[index].list.map(item=>item.name))    
+    },
+    costChange(picker,values){
+        //获取当前省份下标
+        let index = this.costList.findIndex(item=>item.name==values[0]);
+        //调用api更新城市
+        this.$refs.costPicker.setColumnValues(1,this.costList[index].list.map(item=>item.name)) 
     },
     cityCancel(){
         this.showCity = false;
     },
+    costCancel(){
+        this.showCost = false;
+    },
     cityConfirm(values){
         this.updateState({city:values})
         this.showCity = false;
+    },
+    costConfirm(values){
+        this.updateState({cost:values})
+        this.showCost = false;
     }
   }
 };

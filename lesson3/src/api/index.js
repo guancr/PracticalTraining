@@ -41,5 +41,5 @@ export let cityList = ()=>{
 
 //获取可补换城市
 export let costList = (...params)=>{
-  return sendRequest(`/api/ExchangeJiaZhao/getCostList?order_type=${params.order_type}&city_id=${params.city_id}&province_id=${params.pro_id}`)
+  return sendRequest(`/api/ExchangeJiaZhao/getCostList?order_type=${params[0]}&city_id=${params[2]}&province_id=${params[1]}`)
 }
