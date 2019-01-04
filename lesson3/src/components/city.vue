@@ -29,7 +29,8 @@ export default {
         showCost: false,
         cityColumns:[],
         costColumns:[],
-        iconShow: false
+        iconShow: false,
+        costindexs:0
       }
   },
   beforeCreate() {},

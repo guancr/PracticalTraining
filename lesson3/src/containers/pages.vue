@@ -78,14 +78,16 @@
     </div>
     <div class="footer">
       <span>实付：<b>￥399</b></span>
-      <span class="pay">立即支付</span>
+      <span class="pay" @click="click">立即支付</span>
     </div>
+    <!-- <button>立即支付</button> -->
   </div>
 </template>
 
 <script>
 import Upload from '../components/upLoad'
 import CityPicker from '../components/city'
+import {isVip, goPay} from '../api/index';
 // const JSBridge = require('./utils/JSBridge.js');
 export default {
   name: 'pages',
@@ -93,7 +95,10 @@ export default {
     return {
       columns: ['换驾照', '补驾照'],
       popupShow:false,
-      clickVal:'换驾照'
+      clickVal:'换驾照',
+      form: {
+        type: ''
+      }
     };
   },
   methods: {
@@ -106,6 +111,9 @@ export default {
     },
     hjzClick(){
       this.popupShow = true;
+    },
+    click(){
+      goPay();
     }
   },
   // mounted(){
@@ -120,6 +128,11 @@ export default {
   components:{
       Upload,
       CityPicker
+  },
+  mounted(){
+    isVip().then(res=>{
+      console.log('isVip...', res);
+    })
   }
 }
 </script>
