@@ -1,7 +1,8 @@
 <template>
     <ul>
         <li @click="cityListClick">
-            <span>当前驾照签发城市<b class="icons">?</b></span>
+            <span @click="iconClick">当前驾照签发城市<b class="icons">?</b></span>
+            <van-popup v-model="iconShow">内容</van-popup>
             <!-- <b class="citynone">请选择补换地</b> -->
             <b title="请选择补换地">{{city.join('')}}</b>
         </li>
@@ -27,7 +28,8 @@ export default {
         showCity: false,
         showCost: false,
         cityColumns:[],
-        costColumns:[]
+        costColumns:[],
+        iconShow: false
       }
   },
   beforeCreate() {},
@@ -99,6 +101,9 @@ export default {
     costConfirm(values){
         this.updateState({cost:values})
         this.showCost = false;
+    },
+    iconClick(){
+        this.iconClick = true;
     }
   }
 };
