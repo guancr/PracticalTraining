@@ -1,54 +1,14 @@
 <template>
-  <!-- <button @click="login">点击登陆</button> --> 
   <div class="boxs">
-    <!-- <div class="header">
-      <b><</b>
-      <span>补换驾照</span>
-      <b>···</b>
-    </div> -->
     <div class="main">
       <div class="topnav">
-        <!-- <img src="./images/1_02.jpg" alt=""> -->
           <span>订单提交</span>
           <span>填写收货地址</span>
           <span>正在办理</span>
           <span>办理完成</span>
       </div>
       <img src="../images/2_02.jpg" alt="">
-      <!-- <ul class="upload">
-        <li>
-          <div class="picbox">
-            <b>+</b>
-          </div>
-          <span>身份证正面</span>
-        </li>
-        <li>
-          <div class="picbox">
-            <b>+</b>
-          </div>
-          <span>身份证正面</span>
-        </li>
-        <li>
-          <div class="picbox">
-            <b>+</b>
-          </div>
-          <span>身份证正面</span>
-        </li>
-        <li>
-          <div class="picbox">
-            <b>+</b>
-          </div>
-          <span>身份证正面</span>
-        </li>
-        <li>
-          <div class="picbox">
-            <b>+</b>
-          </div>
-          <span>身份证正面</span>
-        </li>
-      </ul> -->
-      <Upload/>
-      
+      <Upload/>    
       <div class="list">
         <div class="filters">
           <span>服务类型</span>
@@ -57,13 +17,7 @@
         <van-popup v-model="popupShow" position="bottom">
           <van-picker :columns="columns" @cancel="cancel" @confirm="confirm" show-toolbar />
         </van-popup>
-        <!-- <van-picker :columns="columns" @confirm="confirm" confirm-button-text cancel-button-text /> -->
-        <!-- <li>
-          <span>当前驾照签发城市<b class="icons">?</b></span>
-          <b>请选择签发地</b>
-        </li> -->
-        <CityPicker/>
-        
+        <CityPicker/>        
         <div class="money">
           <span>服务费</span>
           <b class="price">￥399</b>
@@ -75,20 +29,20 @@
           <b>登陆后查看优惠券</b>
         </li>
       </ul>
+          <Kefu/>
     </div>
     <div class="footer">
       <span>实付：<b>￥399</b></span>
-      <span class="pay" @click="click">立即支付</span>
+      <router-link to="/add" tag="span" class="pay" @click="click">立即支付</router-link>
     </div>
-    <!-- <button>立即支付</button> -->
   </div>
 </template>
 
 <script>
 import Upload from '../components/upLoad'
 import CityPicker from '../components/city'
+import Kefu from '../components/kefu'
 import {isVip, goPay} from '../api/index';
-// const JSBridge = require('./utils/JSBridge.js');
 export default {
   name: 'pages',
   data() {
@@ -116,18 +70,10 @@ export default {
       goPay();
     }
   },
-  // mounted(){
-  //   fetch('/api/ExchangeJiaZhao/cityList',{
-  //      method: "GET", // 请求的方法POST/GET等
-  //       headers : { // 请求头（可以是Headers对象，也可是JSON对象）
-  //           'Content-Type': 'application/json',
-  //           'Accept': 'application/json'
-  //       }
-  //   })
-  // },
   components:{
       Upload,
-      CityPicker
+      CityPicker,
+      Kefu
   },
   mounted(){
     isVip().then(res=>{
@@ -185,7 +131,12 @@ export default {
       }
     }
   }
-  
+  .kefu{
+    position: fixed;
+    right: 10px;
+    width: 50px;
+    z-index: 99;
+  }
   .list{
     width: 100%;
     border-top: solid 10px #eee;

@@ -8,7 +8,7 @@
     </div>
   </div> -->
    <div class="chelun-index">
-     <img src="http://picture.eclicks.cn/g1/l/2018/04/17/2e324eb8e740788b_2633_960.png" alt="">
+     <img src="../img/2e324eb8e740788b_2633_960.png" alt="">
     <div class="header-pc">
       <div class="header-content">
         <a href="/" class="logo">

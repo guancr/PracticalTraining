@@ -7,11 +7,15 @@ Vue.use(VueRouter);
 
 // 引入路由组件
 import IndexPage from '../containers/pages';
+import Add from '../containers/add';
 
 const router = new VueRouter({
   routes: [{
     path: '/index',
     component: IndexPage
+  },{
+    path: '/add',
+    component: Add
   }, {
     path: '*',
     redirect: '/index'
