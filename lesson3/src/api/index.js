@@ -40,6 +40,11 @@ export let goPay = ()=>{
   });
 }
 
+//唤醒分享
+export let goShare = ()=>{
+  JSBridge.invoke('ui', 'shareMessage')
+}
+
 // 图片上传
 export let uploadImg = (type)=>{
   return new Promise((resolve, reject)=>{
