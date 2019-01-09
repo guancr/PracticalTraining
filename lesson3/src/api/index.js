@@ -72,3 +72,7 @@ export let isVip = ()=>{
   return sendRequest('https://vip.chelun.com/api/status')
 }
 
+// 上传base64图片
+export let uploadBase64 = (base64)=>{
+  return sendRequest('http://123.206.55.50:11000/upload_base64', 'POST', {base64})
+}
