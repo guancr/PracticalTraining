@@ -8,6 +8,8 @@ Vue.use(VueRouter);
 // 引入路由组件
 import IndexPage from '../containers/pages';
 import Add from '../containers/add';
+import CanvasPage from '../containers/cavas';
+import EleUi from '../containers/elemenntui.vue';
 
 const router = new VueRouter({
   routes: [{
@@ -16,6 +18,12 @@ const router = new VueRouter({
   },{
     path: '/add',
     component: Add
+  },{
+    path: '/canvas',
+    component: CanvasPage
+  },{
+    path: '/eleui',
+    component: EleUi
   }, {
     path: '*',
     redirect: '/index'
