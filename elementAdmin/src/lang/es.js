@@ -78,6 +78,7 @@ export default {
     register:'register',
     username: 'Usuario',
     password: 'Contraseña',
+    number: 'phoneNumber',
     any: 'nada',
     thirdparty: 'Conectar con',
     thirdpartyTips: 'No se puede simular en local, así que combine su propia simulación de negocios. ! !'
