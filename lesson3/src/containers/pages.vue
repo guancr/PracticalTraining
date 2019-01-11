@@ -35,6 +35,7 @@
       <span>实付：<b>￥399</b></span>
       <router-link to="/add" tag="span" class="pay" @click="click">立即支付</router-link>
     </div>
+    <div class="hahaha">❤</div>
   </div>
 </template>
 

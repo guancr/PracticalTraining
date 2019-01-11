@@ -49,13 +49,13 @@ export default {
 </script>
 
 <style scoped>
-.drag-select >>> .sortable-ghost{
+ .sortable-ghost{
   opacity: .8;
   color: #fff!important;
   background: #42b983!important;
 }
 
-.drag-select >>> .el-tag{
+ .el-tag{
   cursor: pointer;
 }
 </style>

@@ -59,14 +59,14 @@ export default {
   height: 100%;
   position: relative;
 }
-.json-editor >>> .CodeMirror {
+ .CodeMirror {
   height: auto;
   min-height: 300px;
 }
-.json-editor >>> .CodeMirror-scroll{
+ .CodeMirror-scroll{
   min-height: 300px;
 }
-.json-editor >>> .cm-s-rubyblue span.cm-string {
+ .cm-s-rubyblue span.cm-string {
   color: #F08047;
 }
 </style>
