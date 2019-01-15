@@ -9,7 +9,7 @@ const userRouter = {
   name: 'User',
   meta: {
     title: 'UserList',
-    icon: 'table'
+    icon: 'people'
   },
   children: [
     {

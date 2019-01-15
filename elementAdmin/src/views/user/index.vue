@@ -28,11 +28,44 @@
     </el-table>
     <el-pagination
       :current-page="current"
-      pager-count="5"
+      :pager-count="5"
       @current-change="handleChange"
       layout="prev, pager, next"
       :total="100">
     </el-pagination>
+    <el-dialog title="收货地址" :visible.sync="dialog">
+      <el-form :model="currentUser" :rules="editRules" ref="form">
+        <el-form-item label="姓名" :label-width="formLabelWidth" prop="username">
+          <el-input v-model="currentUser.username" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="头像" :label-width="formLabelWidth">
+          <el-upload
+            class="avatar-uploader"
+            action="123"
+            :show-file-list="false">
+            <img v-if="currentUser.avatar" :src="currentUser.avatar" class="avatar" style="width:50px;height:50px">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </el-form-item>
+        <el-form-item label="简介" :label-width="formLabelWidth" prop="profile">
+          <el-input v-model="currentUser.profile" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="手机号" :label-width="formLabelWidth" prop="phone">
+          <el-input v-model="currentUser.phone" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" :label-width="formLabelWidth" prop="email">
+          <el-input v-model="currentUser.email" autocomplete="off"></el-input>
+        </el-form-item>
+        <!-- <el-form-item label="地址" :label-width="formLabelWidth" prop="address">
+          <el-input v-model="form.address" autocomplete="off"></el-input>
+        </el-form-item> -->
+      </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="dialog = false">取 消</el-button>
+      <el-button type="primary" @click="dialogsure">确 定</el-button>
+    </div>
+  </el-dialog>
+
 </div>
 </template>
 
@@ -40,8 +73,41 @@
 import {mapState,mapActions} from 'vuex'
 export default {
   data() {
+    const profileValidator = (rule, value, callback)=>{
+      if(!value || value.length<20){
+        callback(new Error('个人简历不能低于20个字'))
+      }else{
+        callback()
+      }
+    }
+
+    const phoneValidator = (rule, value, callback)=>{
+      if(!/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/.test(value)){
+        callback(new Error('请输入正确的手机号码'))
+      }else{
+        callback()
+      }
+    }
+
+    const emailValidator = (rule, value, callback)=>{
+      if(!/^[a-z0-9A-Z_.-]+@[a-z0-9A-Z-]+(\.[a-z0-9A-Z-]+)*\.[a-z0-9A-Z]{2,6}$/.test(value)){
+        callback(new Error('请输入正确的邮箱地址'))
+      }else{
+        callback()
+      }
+    }
+
     return {
-       current:1
+       current:1,
+       dialog:false,
+       formLabelWidth: '120px',
+       currentUser:{},
+       editRules:{
+        username:[{trigger:'blur',required:false,message:'用户名必填'}],
+        phone:[{trigger:'blur',required:true,validator:phoneValidator}],
+        profile:[{trigger:'blur',required:true,validator:profileValidator}],
+        email:[{trigger:'blur',required:true,validator:emailValidator}]
+       }
     };
   },
   computed:{
@@ -54,16 +120,46 @@ export default {
   },
   methods: {
     ...mapActions({
-      getUserList:'list/getUserList'
+      getUserList:'list/getUserList',
+      updateUserInfo:'list/updateUserInfo'
     }),
     handleChange(page){
+      this.current = page; 
       this.getUserList({page});
     },
     handleEdit(index, row) {
-      console.log(index, row);
+      console.log('row...',row);
+      this.currentUser = {...row};
+      this.dialog = true;
     },
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    dialogsure(){
+      this.dialog = false;
+      this.$refs.form.validate(valid=>{
+        console.log('valid...',valid)
+        if(valid){
+          console.log('currentUser...',this);
+          let {id,username,profile,email,phone} = this.currentUser; 
+          console.log('.........',id)
+          this.updateUserInfo({id,username,profile,email,phone}).then(res=>{
+            this.$message({
+              message:res,
+              center:true,
+              type:'success'
+            })
+            this.getUserList({page:this.current})
+          }).catch(err=>{
+            console.log('err...',err)
+            this.$message({
+              message:err,
+              center:true,
+              type:'error'
+            })
+          })
+        }
+      })
     }
   }
 };

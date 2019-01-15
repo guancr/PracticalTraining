@@ -1,4 +1,4 @@
-import {getUserList} from '@/api/user'
+import {getUserList,updateUserInfo} from '@/api/user'
 // import { resolve } from 'upath';
 // import { reject } from '../../../node_modules/@types/q';
 
@@ -21,6 +21,19 @@ const actions = {
                 if(res.data.code==1){
                     commit('updateList',res.data.data.list);
                     resolve();
+                }else{
+                    reject(res.data.msg)
+                }
+            }).catch(err=>{
+                reject(err)
+            })
+        })
+    },
+    updateUserInfo({commit},data){
+        return new Promise((resolve,reject)=>{
+            updateUserInfo(data).then(res=>{
+                if(res.data.code==1){
+                    resolve(res.data.msg);
                 }else{
                     reject(res.data.msg)
                 }
