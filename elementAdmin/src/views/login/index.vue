@@ -38,7 +38,7 @@
       </el-form-item>
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">{{ $t('login.logIn') }}</el-button>
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleRegister">{{ $t('login.register') }}</el-button>
+      <el-button type="primary" style="width:100%;margin-bottom:30px;margin-left:0;" @click.native.prevent="handleRegister">{{ $t('login.register') }}</el-button>
 
       <div style="position:relative">
         <div class="tips">
@@ -74,9 +74,9 @@ export default {
   name: 'Login',
   components: { LangSelect, SocialSign },
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
-        callback(new Error('Please enter the correct user name'))
+    const username = (rule, value, callback) => {
+      if (value.length<2) {
+        callback(new Error('用户名长度必须大于2'))
       } else {
         callback()
       }
@@ -90,12 +90,12 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '1111111'
+        username: 'guan123',
+        password: '123456'
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        username: [{ required: true, trigger: 'blur'},{trigger:'blur',validator:username }],
+        password: [{ required: true, trigger: 'blur',validator:validatePassword }]
       },
       passwordType: 'password',
       loading: false,

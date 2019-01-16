@@ -23,6 +23,7 @@
         </el-tooltip>
       </template>
 
+      <span style="margin:5px;">{{name}}</span>
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
