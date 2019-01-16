@@ -2,7 +2,6 @@ import request from '@/utils/request'
 
 //获取用户列表
 export function getUserList(params) {
-  console.log('param...', params);
   return request({
     url: '/users/list', // 假地址 自行替换
     method: 'get',
@@ -24,6 +23,15 @@ export function deleteUser(data){
   return request({
     url:'/users/action',
     method:'delete',
+    data
+  })
+}
+
+//修改角色
+export function changeRoler(data){
+  return request({
+    url:'/users/action',
+    method:'put',
     data
   })
 }

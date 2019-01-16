@@ -1,4 +1,4 @@
-import {getUserList,updateUserInfo,deleteUser} from '@/api/user'
+import {getUserList,updateUserInfo,deleteUser,changeRoler} from '@/api/user'
 // import { resolve } from 'upath';
 // import { reject } from '../../../node_modules/@types/q';
 
@@ -44,6 +44,19 @@ const actions = {
     deleteUser({commit},data){
         return new Promise((resolve,reject)=>{
             deleteUser(data).then(res=>{
+                if(res.data.code==1){
+                    resolve(res.data.msg);
+                }else{
+                    reject(res.data.msg)
+                }
+            }).catch(err=>{
+                reject(err)
+            })
+        })
+    },
+    changeRoler({commit},data){
+        return new Promise((resolve,reject)=>{
+            changeRoler(data).then(res=>{
                 if(res.data.code==1){
                     resolve(res.data.msg);
                 }else{

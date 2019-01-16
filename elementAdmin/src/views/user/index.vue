@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-table :data="tableData" style="width: 100%">
-      <el-table-column prop="id" label="ID" width="40">
+      <el-table-column prop="id" label="ID" width="60">
       </el-table-column>
       <el-table-column label="头像" width="100">
         <template slot-scope="scope">
@@ -54,12 +54,12 @@
       layout="prev, pager, next"
       :total="100">
     </el-pagination>
-    <el-dialog :title="type=='edit'?'编辑用户信息':'修改用户角色'" :visible.sync="dialog">
+    <el-dialog :title="types=='edit'?'编辑用户信息':'修改用户角色'" :visible.sync="dialog">
       <el-form :model="currentUser" :rules="editRules" ref="form">
-        <el-form-item v-if="type=='edit'" label="姓名" :label-width="formLabelWidth" prop="username">
+        <el-form-item v-if="types=='edit'" label="姓名" :label-width="formLabelWidth" prop="username">
           <el-input v-model="currentUser.username" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="type=='edit'" label="头像" :label-width="formLabelWidth">
+        <el-form-item v-if="types=='edit'" label="头像" :label-width="formLabelWidth">
           <el-upload
             class="avatar-uploader"
             action="123"
@@ -68,19 +68,19 @@
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
-        <el-form-item v-if="type=='edit'" label="简介" :label-width="formLabelWidth" prop="profile">
+        <el-form-item v-if="types=='edit'" label="简介" :label-width="formLabelWidth" prop="profile">
           <el-input v-model="currentUser.profile" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="type=='edit'" label="手机号" :label-width="formLabelWidth" prop="phone">
+        <el-form-item v-if="types=='edit'" label="手机号" :label-width="formLabelWidth" prop="phone">
           <el-input v-model="currentUser.phone" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="type=='edit'" label="邮箱" :label-width="formLabelWidth" prop="email">
+        <el-form-item v-if="types=='edit'" label="邮箱" :label-width="formLabelWidth" prop="email">
           <el-input v-model="currentUser.email" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="type=='edit'" label="地址" :label-width="formLabelWidth" prop="address">
+        <el-form-item v-if="types=='edit'" label="地址" :label-width="formLabelWidth" prop="address">
           <el-input v-model="currentUser.address" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item v-if="type=='roler'" label="我的角色" :label-width="formLabelWidth">
+        <el-form-item v-if="types=='roler'" label="我的角色" :label-width="formLabelWidth">
           <el-tag
             :key="tag"
             style="margin:1px 2px;"
@@ -90,7 +90,7 @@
             {{tag}}
           </el-tag>
         </el-form-item>
-        <el-form-item v-if="type=='roler'" label="全部角色" :label-width="formLabelWidth">
+        <el-form-item v-if="types=='roler'" label="全部角色" :label-width="formLabelWidth">
           <el-tag
             :key="tag"
             style="margin:1px 2px;"
@@ -158,7 +158,7 @@ export default {
         email: [{ trigger: "blur", required: true, validator: emailValidator }],
         address: [{ trigger: "blur", required: true, message: "地址必填" }]
       },
-      type: "", //弹框类型，edit表示修改信息，roler表示修改角色
+      types: "", //弹框类型，edit表示修改信息，roler表示修改角色
       rolers: ["boss", "developer", "producter", "operater", "designer"],
       myRolers: []
     };
@@ -175,14 +175,15 @@ export default {
     ...mapActions({
       getUserList: "list/getUserList",
       updateUserInfo: "list/updateUserInfo",
-      deleteUser: "list/deleteUser"
+      deleteUser: "list/deleteUser",
+      changeRoler: "list/changeRoler"
     }),
     handleChange(page) {
       this.current = page;
       this.getUserList({ page });
     },
     handleEdit(index, row) {
-      this.type = "edit";
+      this.types = "edit";
       this.currentUser = { ...row };
       this.dialog = true;
     },
@@ -191,12 +192,7 @@ export default {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
-      })
-        .then(() => {
-          // this.$message({
-          //   type: 'success',
-          //   message: '删除成功!'
-          // });
+      }).then(() => {
           let { id } = row;
           this.deleteUser({ uid: id })
             .then(res => {
@@ -223,7 +219,7 @@ export default {
         });
     },
     handleRoler(index, row) {
-      this.type = "roler";
+      this.types = "roler";
       this.currentUser = { ...row };
       this.myRolers = [...row.rolers];
       this.dialog = true;
@@ -238,37 +234,47 @@ export default {
     },
     dialogsure() {
       this.dialog = false;
-      this.$refs.form.validate(valid => {
-        console.log("valid...", valid);
-        if (valid) {
-          console.log("currentUser...", this);
-          let {
-            id,
-            username,
-            profile,
-            email,
-            phone,
-            address
-          } = this.currentUser;
-          this.updateUserInfo({ id, username, profile, email, phone, address })
-            .then(res => {
-              this.$message({
-                message: res,
-                center: true,
-                type: "success"
+      if(this.types=='edit'){
+        this.$refs.form.validate(valid => {
+          if (valid) {
+            let {id,username,profile,email,phone,address} = this.currentUser;
+            this.updateUserInfo({ id, username, profile, email, phone, address }).then(res => {
+                this.$message({
+                  message: res,
+                  center: true,
+                  type: "success"
+                });
+                this.getUserList({ page: this.current });
+              }).catch(err => {
+                this.$message({
+                  message: err,
+                  center: true,
+                  type: "error"
+                });
               });
-              this.getUserList({ page: this.current });
-            })
-            .catch(err => {
-              this.$message({
-                message: err,
-                center: true,
-                type: "error"
-              });
+          }
+        });
+      }else if(this.types=='roler'){
+        let {id} = this.currentUser;
+          let rolersId = this.myRolers.map(item=>{
+            return this.rolers.findIndex(value=>value==item)+1
+          })
+          this.changeRoler({uid: id, rolersId}).then(res=>{
+            this.$message({
+              message: res,
+              center: true,
+              type: 'success'
             });
+            this.getUserList({page: this.current});
+          }).catch(err=>{
+            this.$message({
+              message: err,
+              center: true,
+              type: 'error'
+            });
+          })
         }
-      });
-    }
+      }
   }
 };
 </script>
