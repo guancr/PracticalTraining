@@ -8,6 +8,11 @@
              <img :src="scope.row.avatar" alt="" style="width: 100%">
         </template>
       </el-table-column>
+      <el-table-column label="创建时间" width="100">
+        <template slot-scope="scope">
+          <span>{{scope.row.create_time | formatDate}}</span>
+        </template>
+      </el-table-column>      
       <el-table-column prop="username" label="姓名" width="80">
       </el-table-column>
       <el-table-column prop="profile" label="简介" width="150">
@@ -52,7 +57,7 @@
       :pager-count="5"
       @current-change="handleChange"
       layout="prev, pager, next"
-      :total="100">
+      :total="300">
     </el-pagination>
     <el-dialog :title="types=='edit'?'编辑用户信息':'修改用户角色'" :visible.sync="dialog">
       <el-form :model="currentUser" :rules="editRules" ref="form">
