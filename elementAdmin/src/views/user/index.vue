@@ -1,5 +1,6 @@
 <template>
 <div>
+  <el-button :loading="downloadLoading" style="margin:0 0 20px 20px;" type="primary" icon="document" @click="handleDownload">{{ $t('excel.export') }} Excel</el-button>
   <el-table :data="tableData" style="width: 100%">
       <el-table-column prop="id" label="ID" width="60">
       </el-table-column>
@@ -155,6 +156,7 @@ export default {
       dialog: false,
       formLabelWidth: "120px",
       currentUser: {},
+      downloadLoading:false,
       editRules: {
         username: [{ trigger: "blur", required: false, message: "用户名必填" }],
         phone: [{ trigger: "blur", required: true, validator: phoneValidator }],
@@ -240,6 +242,24 @@ export default {
       this.currentUser = { ...row };
       this.myRolers = [...row.rolers];
       this.dialog = true;
+    },
+    handleDownload(){
+      this.downloadLoading = true;
+      import('@/vendor/Export2Excel').then(excel=>{
+        const tHeader = Object.keys(this.tableData[0]);
+        const data = this.tableData.map(item=>{
+          return Object.values(item)
+        })
+
+        excel.export_json_to_excel({
+          header:tHeader,
+          data,
+          filename:"用户信息",
+          autoWidth:'true',
+          bookType:'xlsx'
+        })
+        this.downloadLoading = false;
+      })
     },
     deleteRoler(roler) {
       let index = this.myRolers.findIndex(item => item == roler);

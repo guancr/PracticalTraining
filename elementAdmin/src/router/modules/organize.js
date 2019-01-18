@@ -19,13 +19,13 @@ const organizeRouter = {
   }, {
     path: 'coding',
     component: () =>
-      import ('@/views/organize/index'),
+      import ('@/views/organize/chart'),
     name: 'Coding',
     meta: { title: 'Coding', icon: 'coding', roles: ['coding'] }
   }, {
     path: 'review',
     component: () =>
-      import ('@/views/organize/index'),
+      import ('@/views/organize/review'),
     name: 'Review',
     meta: { title: 'Review', icon: 'review', roles: ['review'] }
   }, {
