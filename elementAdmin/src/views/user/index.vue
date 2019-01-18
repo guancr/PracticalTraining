@@ -67,7 +67,8 @@
         <el-form-item v-if="types=='edit'" label="头像" :label-width="formLabelWidth">
           <el-upload
             class="avatar-uploader"
-            action="123"
+            :on-success="uploadSuccess"
+            action="http://123.206.55.50:11000/upload"
             :show-file-list="false">
             <img v-if="currentUser.avatar" :src="currentUser.avatar" class="avatar" style="width:50px;height:50px">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -187,6 +188,17 @@ export default {
       this.current = page;
       this.getUserList({ page });
     },
+    uploadSuccess(res,file,fileList){
+      if(res.code==1){
+        this.currentUser.avatar = res.data[0].path;
+      }else{
+        this.$message({
+          message: res.msg,
+          center: true,
+          type: "success"
+        });
+      }
+    },
     handleEdit(index, row) {
       this.types = "edit";
       this.currentUser = { ...row };
@@ -242,8 +254,8 @@ export default {
       if(this.types=='edit'){
         this.$refs.form.validate(valid => {
           if (valid) {
-            let {id,username,profile,email,phone,address} = this.currentUser;
-            this.updateUserInfo({ id, username, profile, email, phone, address }).then(res => {
+            let {id,username,avatar,profile,email,phone,address} = this.currentUser;
+            this.updateUserInfo({ id, username,avatar, profile, email, phone, address }).then(res => {
                 this.$message({
                   message: res,
                   center: true,
