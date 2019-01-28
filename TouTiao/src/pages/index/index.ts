@@ -1,37 +1,67 @@
 import { Vue, Component } from 'vue-property-decorator'
-import Card from '@/components/card.vue' // mpvue目前只支持的单文件组件
-import CompB from '@/components/compb.vue' // mpvue目前只支持的单文件组件
+
+import NewsList from '@/components/NewsList/index.vue'
+
+import {mapState, mapActions} from 'vuex'
 
 const debug = require('debug')('log:Index')
+
 
 // 必须使用装饰器的方式来指定component
 @Component({
   components: {
-    Card,
-    CompB, //注意，vue的组件在template中的用法，`CompB` 会被转成 `comp-b`
+    NewsList
+  },
+  computed: {
+    ...mapState({
+      channels: state=>state['index'].channels,
+      newsList: state=>state['index'].newsList
+    })
+  },
+  methods: {
+    ...mapActions({
+      getSetting: 'index/getSetting',
+      getFeed: 'index/getFeed'
+    })
   }
 })
 // @connect
 class Index extends Vue {
   ver: number = 123
-
-  get channels(){
-    console.log('channels...', this.$store.state.index.channels);
-    return this.$store.state.index.channels;
-  }
+  current: number = 0
+  isRefresh: boolean = false
 
   onShow() { // 小程序 hook
     debug('onShow')
-    this.$store.dispatch('index/getSetting');
+    this['getSetting']().then(()=>{
+      let appUrl = this['channels'][0].appUrl;
+      this['getFeed'](appUrl)
+    });
   }
 
-  mounted() { // vue hook
-    debug('mounted')
+  // tab切换
+  tabChange({target}){
+    console.log('target...', target);
+    this.current = target.key;
+    // 获取当前tab的appUrl
+    let appUrl = this['channels'][target.key].appUrl;
+    this['getFeed'](appUrl)
   }
 
-  handleClick():number{
-    console.log('触发了点击事件')
-    return 100
+  // 上拉加载
+  onReachBottom(){
+    console.log(1111);
+    this.isRefresh = true;
+  }
+
+  // 刷新当前新闻
+  refreshPage(){
+    this.isRefresh = true;
+  }
+
+  // 加载下一页
+  loadData(){
+
   }
 }
 

@@ -1,19 +1,174 @@
-@import "../../common/vendor.wxss";
 
-.counter-warp .home.data-v-177fa02f {
-  color: mediumvioletred;
+.counter-wrap.data-v-177fa02f {
+  padding-top: 84rpx;
 }
-.counter-warp.data-v-177fa02f {
-  text-align: center;
-  margin-top: 200rpx;
+.header.data-v-177fa02f {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  z-index: 999;
+  left: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
 }
-.home.data-v-177fa02f {
-  display: block;
-  margin: 20rpx auto;
-  padding: 10rpx 20rpx;
-  color: blue;
-  border: 2rpx solid blue;
+.header .tabs.data-v-177fa02f {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: scroll;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
-.card {
-  padding: 20rpx;
+.tab.data-v-177fa02f {
+  font-size: 24rpx;
+}
+.refresh.data-v-177fa02f {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  bottom: 50rpx;
+  right: 20rpx;
+  background: #fff;
+  border-radius: 50%;
+  padding: 15rpx;
+  border: 2rpx solid #eee;
+  -webkit-box-shadow: 0 0 6rpx 2rpx #c0c0c0;
+  box-shadow: 0 0 6rpx 2rpx #c0c0c0;
+}
+.refresh ._img.data-v-177fa02f {
+  width: 60rpx;
+  height: 60rpx;
+}
+.refresh.active.data-v-177fa02f {
+  -webkit-animation: rotateD-data-v-177fa02f 0.8s linear infinite;
+  animation: rotateD-data-v-177fa02f 0.8s linear infinite;
+}
+@-webkit-keyframes rotateD {
+0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}
+@keyframes rotateD-data-v-177fa02f {
+0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+}
+.list.data-v-6133f9b2 {
+  width: 100%;
+  padding: 0 20rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.item.data-v-6133f9b2 {
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.item .middle-image.data-v-6133f9b2 {
+  width: 45%;
+  padding-left: 10rpx;
+}
+.item > ._div.data-v-6133f9b2 {
+  width: 100%;
+}
+.item.data-v-6133f9b2:last-child {
+  border-bottom: none;
+}
+.title.data-v-6133f9b2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 34rpx;
+  color: #000;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.gallery.data-v-6133f9b2 {
+  margin: 10rpx 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.gallery ._img.data-v-6133f9b2:nth-child(2) {
+  margin: 0 10rpx;
+}
+.media.data-v-6133f9b2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-top: 5rpx;
+}
+.media ._span.data-v-6133f9b2 {
+  font-size: 28rpx;
+  color: #999;
+}
+.media .hot.data-v-6133f9b2 {
+  color: red;
+  border-radius: 5rpx;
+  line-height: 28rpx;
+  vertical-align: middle;
+  font-size: 20rpx;
+  padding: 0 5rpx;
+  border: 1rpx solid red;
+}
+.media .comment.data-v-6133f9b2 {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.media ._span.data-v-6133f9b2:first-child,
+.media .media-name.data-v-6133f9b2 {
+  margin-right: 15rpx;
+}
+.media ._span.data-v-6133f9b2:last-child {
+  font-size: 20rpx;
+  border: 2rpx solid #999;
+  border-radius: 15rpx;
+  padding: 0 15rpx;
 }

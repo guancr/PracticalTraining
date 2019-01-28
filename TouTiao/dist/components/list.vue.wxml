@@ -1,0 +1,8 @@
+<template name="40c52792">
+  <view class="_div data-v-60d0f548 list">
+    <view wx:key="index" key="{{index}}" class="_div data-v-60d0f548 item" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+      <view class="_p data-v-60d0f548 title">{{item.content.title}}</view>
+      <view class="_p data-v-60d0f548 media"><label class="_span data-v-60d0f548">{{item.content.media_name}}</label> <label class="_span data-v-60d0f548">{{item.content.comment_count}}评价</label></view>
+    </view>
+  </view>
+</template>

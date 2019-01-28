@@ -1,23 +1,12 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/logs/main",
-    "pages/counter/main",
-    "pages/page2/main",
-    "pages/testExtend/main"
-  ],
-  "subPackages": [
-    {
-      "root": "packageA",
-      "pages": [
-        "pages/index/main"
-      ]
-    }
+    "pages/detail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#d43d3d",
+    "navigationBarTitleText": "今日头条",
+    "navigationBarTextStyle": "white"
   }
 }

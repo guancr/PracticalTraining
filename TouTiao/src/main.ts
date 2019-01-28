@@ -40,6 +40,5 @@ if (isApp) {
   // MyApp = require('./index.vue')
 }
 
-
 const app = new Vue(MyApp)
 app.$mount()

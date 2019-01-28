@@ -1,58 +1,81 @@
 <template>
-  <div class="counter-warp">
-    <i-button>按钮</i-button>
+  <div class="counter-wrap">
+    <!-- 头部 -->
+    <div class="header">
+      <i-icon type="search" size="28" color="#000" />
+      <div class="tabs">
+        <i-tabs :current="current" scroll @change="tabChange" color="#f85151">
+          <i-tab i-class="tab" v-for="(item, index) in channels" :key="index" :data-url="item.url" :title="item.name"></i-tab>
+        </i-tabs>
+      </div>
+      <i-icon type="add" size="28" color="#000" />
+      <i-icon type="group" size="28" color="#000" />
+    </div>
+    <!-- 新闻列表 -->
+    <news-list :list="newsList"></news-list>
 
-    <i-button>{{name}}</i-button>
+    <p :class="{refresh:true, active:isRefresh}" @click="refreshPage">
+       <img src="../../assets/refresh.png">
+    </p>
 
-    <i-button v-for="(item, index) in channels" :key="index">{{item.name}}</i-button>
   </div>
 </template>
+
 <!--必须指定为ts-->
-
 <script lang="ts" src="./index.ts"></script>
-<!--// function name(target, name, description){
-//   console.log('target...', target)
-//   target.prototype.cname = 'A'
-//   target.prototype.sayName = function(){
-//     return this.cname;
-//   }
-// }
-
-// @connect()
-// @name
-// class A{
-
-// }
-
-// export default {
-//   computed: {
-//     name(){
-//       return (new A()).cname
-//     }
-//   },
-//   mounted() {
-//     let b = new A();
-//     console.log('b....', b.cname);
-//     console.log(b.sayName());
-//   },
-// }
-// </script> -->
-
 
 <style lang="less" scoped>
-  @import "./index";
-
-  .counter-warp {
-    text-align: center;
-    margin-top: 100px;
+  .counter-wrap{
+    padding-top: 84rpx;
   }
-
-  .home {
-    display: block;
-    margin: 10px auto;
-    padding: 5px 10px;
-    color: blue;
-    border: 1px solid blue;
+  .header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    background: #fff;
+    z-index: 999;
+    left: 0;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #eee;
+    .tabs{
+      flex: 1;
+      overflow: scroll;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+    }
   }
-
+  .tab{
+    font-size: 24rpx;
+  }
+  .refresh{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 50rpx;
+    right: 20rpx;
+    background: #fff;
+    border-radius: 50%;
+    padding: 15rpx;
+    border: 1px solid #eee;
+    box-shadow: 0 0 3px 1px #c0c0c0;
+    img{
+      width: 60rpx;
+      height: 60rpx;
+    }
+  }
+  .refresh.active{
+    animation: rotateD .8s linear infinite;
+  }
+  @keyframes rotateD {
+    0%{
+      transform: rotate(0)
+    }
+    100%{
+      transform: rotate(360deg)
+    }
+  }
 </style>

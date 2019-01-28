@@ -1,0 +1,14 @@
+<template name="1065b2db">
+  <view class="_div data-v-6133f9b2 list">
+    <view wx:key="index" key="{{index}}" class="_div data-v-6133f9b2 item" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+      <view class="_div data-v-6133f9b2">
+        <view class="_p data-v-6133f9b2 title">{{item.content.title}}</view>
+        <view class="_div data-v-6133f9b2 gallery">
+          <image src="{{value.url}}" mode="widthFix" wx:key="key" key="{{key}}" wx:for="{{item.content.image_list}}" wx:for-index="key" wx:for-item="value" class="_img data-v-6133f9b2"></image>
+        </view>
+        <view class="_p data-v-6133f9b2 media"><label class="_span data-v-6133f9b2 hot" wx:if="{{item.content.hot}}">热</label> <label class="_span data-v-6133f9b2 media-name">{{item.content.media_name}}</label> <label class="_span data-v-6133f9b2 comment">{{item.content.comment_count}}评价</label> <label bindtap="handleProxy" data-eventid="{{'0-'+index}}" data-comkey="{{$k}}" class="_span data-v-6133f9b2">X</label></view>
+      </view>
+      <image class="_img data-v-6133f9b2 middle-image" mode="widthFix" src="{{item.content.middle_image.url}}" wx:if="{{!item.content.image_list && item.content.middle_image}}"></image>
+    </view>
+  </view>
+</template>
