@@ -1,15 +1,15 @@
-<import src="/components/NewsList/index.vue.wxml" /><template name="5f27039e">
+<import src="/components/NewsList/index.vue.wxml" /><template name="bcf84df0">
   <view class="_div data-v-177fa02f counter-wrap">
-    <view class="_div data-v-177fa02f header">
-      <i-icon type="search" size="28" color="#000" class="_i-icon data-v-177fa02f"></i-icon>
+    <view class="_div data-v-177fa02f header" style="padding:0 4px;">
+      <i-icon type="search" size="20" color="#000" class="_i-icon data-v-177fa02f"></i-icon>
       <view class="_div data-v-177fa02f tabs">
         <i-tabs current="{{current}}" scroll bindchange="handleProxy" color="#f85151" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-177fa02f">
           <i-tab i-class="tab" wx:key="index" key="{{index}}" data-url="{{item.url}}" title="{{item.name}}" wx:for="{{channels}}" wx:for-index="index" wx:for-item="item" class="_i-tab data-v-177fa02f"></i-tab>
         </i-tabs>
       </view>
-      <i-icon type="add" size="28" color="#000" class="_i-icon data-v-177fa02f"></i-icon>
-      <i-icon type="group" size="28" color="#000" class="_i-icon data-v-177fa02f"></i-icon>
-    </view> <template data="{{...$root[$kk+'5'], $root}}" is="1065b2db"></template>
+      <i-icon type="add" size="20" color="#000" style="padding-right:4px;" class="_i-icon data-v-177fa02f"></i-icon>
+      <i-icon type="group" size="20" color="#000" class="_i-icon data-v-177fa02f"></i-icon>
+    </view> <template data="{{...$root[$kk+'5'], $root}}" is="e9190376"></template>
     <view bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_p data-v-177fa02f {{[true ? 'refresh' : '', isRefresh ? 'active' : '']}}">
       <image src="/assets/refresh.png" class="_img data-v-177fa02f"></image>
     </view>

@@ -1,4 +1,4 @@
-<template name="b7920ebe">
+<template name="a5165f12">
   <view class="_div data-v-323c77aa">
     <view class="_p data-v-323c77aa">我是{{msg}}页面</view>
   </view>

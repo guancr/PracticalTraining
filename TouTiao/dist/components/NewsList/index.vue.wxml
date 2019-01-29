@@ -1,6 +1,6 @@
-<template name="1065b2db">
+<template name="e9190376">
   <view class="_div data-v-6133f9b2 list">
-    <view wx:key="index" key="{{index}}" class="_div data-v-6133f9b2 item" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
+    <view wx:key="index" key="{{index}}" class="_div data-v-6133f9b2 item" bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">
       <view class="_div data-v-6133f9b2">
         <view class="_p data-v-6133f9b2 title">{{item.content.title}}</view>
         <view class="_div data-v-6133f9b2 gallery">

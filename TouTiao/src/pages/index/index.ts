@@ -21,7 +21,8 @@ const debug = require('debug')('log:Index')
   methods: {
     ...mapActions({
       getSetting: 'index/getSetting',
-      getFeed: 'index/getFeed'
+      getFeed: 'index/getFeed',
+      getMore: 'index/getMore'
     })
   }
 })
@@ -50,18 +51,22 @@ class Index extends Vue {
 
   // 上拉加载
   onReachBottom(){
-    console.log(1111);
     this.isRefresh = true;
+    this.loadData();
   }
 
   // 刷新当前新闻
   refreshPage(){
     this.isRefresh = true;
+    this.loadData();
   }
 
   // 加载下一页
   loadData(){
-
+    let appUrl = this['channels'][0].appUrl;
+    this['getMore'](appUrl).then(()=>{
+      this.isRefresh = false;
+    });
   }
 }
 

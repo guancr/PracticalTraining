@@ -2,7 +2,7 @@
 	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": false,
-		"es6": false,
+		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -10,7 +10,7 @@
 	},
 	"miniprogramRoot": "dist/",
 	"compileType": "miniprogram",
-	"appid": "wx6d4ab8a9df77feb1",
+	"appid": "wx78bdacb37a744f06",
 	"projectname": "TouTiao",
 	"libVersion": "2.2.1",
 	"condition": {

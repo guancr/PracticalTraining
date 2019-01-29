@@ -1,9 +1,9 @@
-import {getSetting, getFeed} from '@/data/index';
+import {getSetting, getFeed, getMore} from '@/data/index';
 
 const state = {
   channels: [],
   newsList: [],
-  hot_time: []
+  hot_time: ''
 }
 
 const mutations = {
@@ -16,8 +16,16 @@ const mutations = {
     state.newsList = newsList;
     state.hot_time = newsList.map(item=>{
       return item.content.behot_time;
-    }).sort()[0];
+    }).sort((a,b)=>b-a)[0];
     console.log('hot_time...', state.hot_time)
+  },
+  // 上拉加载
+  appendNewsList(state, newsList){
+    state.newsList = [...state.newsList, ...newsList];
+    console.log(state.newsList.length);
+    state.hot_time = newsList.map(item=>{
+      return item.content.behot_time;
+    }).sort((a,b)=>b-a)[0];
   },
   // 删除新闻
   removeNews(state, id){
@@ -44,7 +52,19 @@ const actions = {
     })
     commit('updateNewsList', news.data);
     console.log('news...', news);
+  },
+
+  async getMore({commit, state}, url){
+    url += `&max_behot_time=${state.hot_time}`
+    let news = await getFeed(url);
+    news.data.forEach(item=>{
+      // 格式化content
+      item.content = JSON.parse(item.content)
+    })
+    commit('appendNewsList', news.data);
+    console.log('news...', news);
   }
+
 }
 
 export default {
