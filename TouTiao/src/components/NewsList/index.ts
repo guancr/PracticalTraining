@@ -16,12 +16,12 @@ class List extends Vue {
     default: []
   }) list;
 
-  mounted() {
-     console.log('list...')
-  }
-
-  listClick(){
-    console.log(9)
+  // 跳转详情
+  goDetail(url){
+    let arr = url.split('/');
+    wx.navigateTo({
+      url: `/pages/detail/main?id=${arr[arr.length-2]}`
+    })
   }
 }
 export default List

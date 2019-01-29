@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <div v-for="(item, index) in list" :key="index" class="item" @click="listClick">
+    <div v-for="(item, index) in list" :key="index" class="item" @click="goDetail(item.content.display_url)">
       <div>
         <p class="title">{{item.content.title}}</p>
         <div class="gallery">
@@ -88,7 +88,7 @@
     font-size: 20rpx;
     border: 1px solid #999;
     border-radius: 15rpx;
-    padding: 0 16rpx;
+    padding: 0 15rpx;
   }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="counter-wrap">
     <!-- 头部 -->
-    <div class="header" style="padding:0 4px;">
-      <i-icon type="search" size="20" color="#000"/>
+    <div class="header">
+      <i-icon type="search" size="20" color="#000" />
       <div class="tabs">
         <i-tabs :current="current" scroll @change="tabChange" color="#f85151">
           <i-tab i-class="tab" v-for="(item, index) in channels" :key="index" :data-url="item.url" :title="item.name"></i-tab>
@@ -36,6 +36,7 @@
     position: fixed;
     top: 0;
     background: #fff;
+    padding: 0 4px;
     z-index: 999;
     left: 0;
     box-sizing: border-box;
@@ -63,12 +64,12 @@
     border: 1px solid #eee;
     box-shadow: 0 0 3px 1px #c0c0c0;
     img{
-      width: 54rpx;
-      height: 54rpx;
+      width: 60rpx;
+      height: 60rpx;
     }
   }
   .refresh.active{
-    animation: rotateD 1s linear infinite;
+    animation: rotateD .8s linear infinite;
   }
   @keyframes rotateD {
     0%{

@@ -1,1 +1,113 @@
 @import "../../common/vendor.wxss";
+
+.container.data-v-323c77aa {
+  padding: 30rpx 20rpx;
+}
+.container ._li.data-v-323c77aa {
+  margin: 15rpx 0;
+}
+.container ._p.data-v-323c77aa {
+  font-size: 36rpx;
+}
+.container ._h1.data-v-323c77aa {
+  text-align: left;
+  font-size: 48rpx;
+  font-weight: 800;
+  width: 100%;
+}
+.media.data-v-323c77aa {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 20rpx 0 10rpx;
+}
+.media ._img.data-v-323c77aa {
+  width: 50rpx;
+}
+.media .media-user.data-v-323c77aa {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 20rpx;
+}
+.media .media-user ._p.data-v-323c77aa:first-child {
+  font-size: 30rpx;
+  color: #333;
+}
+.media .media-user ._p:first-child ._span.data-v-323c77aa {
+  font-size: 20rpx;
+  color: #fff;
+  background: red;
+  border-radius: 10rpx;
+  padding: 0 5rpx;
+}
+.media .media-user ._p.data-v-323c77aa:last-child {
+  font-size: 24rpx;
+  color: #999;
+}
+.media .action ._button.data-v-323c77aa {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.5;
+  margin-left: 10rpx;
+}
+.content ._img.data-v-323c77aa,
+.content ._video.data-v-323c77aa {
+  width: 100%;
+}
+._footer.data-v-323c77aa {
+  width: 100%;
+  padding: 5rpx 15rpx;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+._footer ._input.data-v-323c77aa {
+  background: #ccc;
+  border-radius: 20rpx;
+  padding: 0 50rpx;
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+._footer .editor.data-v-323c77aa {
+  position: absolute;
+  top: 22rpx;
+  left: 20rpx;
+  z-index: 1000;
+}

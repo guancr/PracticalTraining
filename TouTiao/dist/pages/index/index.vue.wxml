@@ -1,6 +1,6 @@
 <import src="/components/NewsList/index.vue.wxml" /><template name="bcf84df0">
   <view class="_div data-v-177fa02f counter-wrap">
-    <view class="_div data-v-177fa02f header" style="padding:0 4px;">
+    <view class="_div data-v-177fa02f header">
       <i-icon type="search" size="20" color="#000" class="_i-icon data-v-177fa02f"></i-icon>
       <view class="_div data-v-177fa02f tabs">
         <i-tabs current="{{current}}" scroll bindchange="handleProxy" color="#f85151" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-177fa02f">

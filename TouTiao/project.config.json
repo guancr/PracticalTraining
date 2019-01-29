@@ -34,9 +34,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "详情页",
 					"pathName": "pages/detail/main",
+					"query": "id=6651514253951894023",
 					"scene": null
 				}
 			]

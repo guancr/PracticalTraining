@@ -10,7 +10,7 @@ export let getFeed = (url)=>{
   return fly.request(url)
 }
 
-// // 获取分类分页数据
-// export let getMore = (params)=>{
-//   return fly.request('https://lf.snssdk.com/api/news/feed/v66/?language=zh-Hans-CN&count=20&aid=1162&device_id=6650307045722932750', params)
-// }
+// 获取资讯详情
+export let getDetail = id=>{
+  return fly.request(`https://m.toutiao.com/pwa/api/wxapp/info/${id}/`)
+}

@@ -16,6 +16,7 @@
   position: fixed;
   top: 0;
   background: #fff;
+  padding: 0 8rpx;
   z-index: 999;
   left: 0;
   -webkit-box-sizing: border-box;
@@ -56,12 +57,12 @@
   box-shadow: 0 0 6rpx 2rpx #c0c0c0;
 }
 .refresh ._img.data-v-177fa02f {
-  width: 54rpx;
-  height: 54rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 .refresh.active.data-v-177fa02f {
-  -webkit-animation: rotateD-data-v-177fa02f 1s linear infinite;
-  animation: rotateD-data-v-177fa02f 1s linear infinite;
+  -webkit-animation: rotateD-data-v-177fa02f 0.8s linear infinite;
+  animation: rotateD-data-v-177fa02f 0.8s linear infinite;
 }
 @-webkit-keyframes rotateD {
 0% {
@@ -171,5 +172,5 @@
   font-size: 20rpx;
   border: 2rpx solid #999;
   border-radius: 15rpx;
-  padding: 0 16rpx;
+  padding: 0 15rpx;
 }
